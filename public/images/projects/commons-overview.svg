@@ -1,0 +1,8 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#FFFFFF"/>
+  <rect x="110" y="110" width="980" height="680" stroke="#111111" stroke-width="2"/>
+  <rect x="170" y="170" width="860" height="120" stroke="#111111" stroke-width="2"/>
+  <rect x="170" y="340" width="380" height="390" stroke="#111111" stroke-width="2"/>
+  <rect x="610" y="340" width="420" height="390" stroke="#111111" stroke-width="2"/>
+  <text x="170" y="82" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="4">SIGNAL COMMONS</text>
+</svg>

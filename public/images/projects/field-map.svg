@@ -1,0 +1,10 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#FBFBFA"/>
+  <circle cx="240" cy="260" r="96" stroke="#111111" stroke-width="2"/>
+  <circle cx="600" cy="450" r="96" stroke="#111111" stroke-width="2"/>
+  <circle cx="960" cy="640" r="96" stroke="#111111" stroke-width="2"/>
+  <path d="M324 302L516 408" stroke="#111111" stroke-width="2"/>
+  <path d="M684 492L876 598" stroke="#111111" stroke-width="2"/>
+  <path d="M240 380L960 760" stroke="#E4E4E0" stroke-width="2"/>
+  <text x="120" y="110" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="26" letter-spacing="4">NAVIGATION MODEL</text>
+</svg>

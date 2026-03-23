@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../components/layouts/BaseLayout.astro';
+import BlogList from '../../components/BlogList.astro';
+import Container from '../../components/Container.astro';
+import { getAllPosts } from '../../lib/content';
+
+const posts = await getAllPosts();
+---
+
+<BaseLayout description="Writing on interface clarity, pacing, design systems, and the craft of building quieter software." title="Writing">
+  <section class="border-b border-line/70 py-20 sm:py-24">
+    <Container>
+      <div class="max-w-3xl space-y-6">
+        <p class="editorial-label">Writing</p>
+        <h1 class="page-title">Notes on systems, reading, and the quiet parts of interface work.</h1>
+        <p class="body-large">
+          Essays and process notes focused on building products that remain calm, legible, and useful as they grow.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-24">
+    <Container>
+      <BlogList posts={posts} />
+    </Container>
+  </section>
+</BaseLayout>

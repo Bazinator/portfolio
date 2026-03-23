@@ -1,0 +1,9 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#FBFBFA"/>
+  <rect x="150" y="170" width="220" height="140" stroke="#111111" stroke-width="2"/>
+  <rect x="490" y="380" width="220" height="140" stroke="#111111" stroke-width="2"/>
+  <rect x="830" y="590" width="220" height="140" stroke="#111111" stroke-width="2"/>
+  <path d="M370 240H490" stroke="#111111" stroke-width="2"/>
+  <path d="M710 450H830" stroke="#111111" stroke-width="2"/>
+  <text x="150" y="120" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="26" letter-spacing="4">PUBLISHING MODEL</text>
+</svg>

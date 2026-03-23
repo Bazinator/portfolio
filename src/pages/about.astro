@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../components/layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import { aboutFocus, aboutNarrative, principles, site } from '../data/site';
+---
+
+<BaseLayout description={`About ${site.name}, a frontend engineer focused on editorial interfaces, design systems, and quieter software.`} title="About">
+  <section class="border-b border-line/70 py-20 sm:py-24">
+    <Container>
+      <div class="max-w-3xl space-y-6">
+        <p class="editorial-label">About</p>
+        <h1 class="page-title">Building digital spaces with patience, precision, and a sense of calm.</h1>
+        <p class="body-large">{site.role}</p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-24">
+    <Container>
+      <div class="grid gap-16 lg:grid-cols-[minmax(0,1.8fr)_280px] lg:gap-20">
+        <article class="prose-editorial">
+          {aboutNarrative.map((paragraph) => <p>{paragraph}</p>)}
+        </article>
+
+        <aside class="space-y-12 border-t border-line/70 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+          <div class="space-y-4">
+            <p class="editorial-label">Focus</p>
+            <ul class="space-y-3 text-sm leading-7 text-muted">
+              {aboutFocus.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <p class="editorial-label">Principles</p>
+            <ul class="space-y-3 text-sm leading-7 text-muted">
+              {principles.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../components/layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import { resumeEducation, resumeExperience, site } from '../data/site';
+---
+
+<BaseLayout description={`Selected experience and background for ${site.name}.`} title="Resume">
+  <section class="border-b border-line/70 py-20 sm:py-24">
+    <Container>
+      <div class="max-w-3xl space-y-6">
+        <p class="editorial-label">Resume</p>
+        <h1 class="page-title">Experience grounded in product systems, editorial structure, and durable front-end work.</h1>
+        <p class="body-large">
+          A concise view of recent roles and the kinds of teams and problems they centered around.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-24">
+    <Container>
+      <div class="space-y-20">
+        <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
+          <p class="editorial-label pt-1">Experience</p>
+          <div class="border-y border-line/80">
+            {
+              resumeExperience.map((item) => (
+                <article class="grid gap-4 border-b border-line/80 py-8 last:border-b-0 sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-8">
+                  <p class="editorial-label">{item.period}</p>
+                  <div class="space-y-3">
+                    <h2 class="text-2xl font-semibold tracking-[-0.03em]">
+                      {item.role}, {item.company}
+                    </h2>
+                    <p>{item.description}</p>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
+          <p class="editorial-label pt-1">Education</p>
+          <div class="space-y-6">
+            {
+              resumeEducation.map((item) => (
+                <article class="space-y-2">
+                  <p class="editorial-label">{item.period}</p>
+                  <h2 class="text-2xl font-semibold tracking-[-0.03em]">{item.title}</h2>
+                  <p>{item.detail}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

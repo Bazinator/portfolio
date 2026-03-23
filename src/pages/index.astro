@@ -1,17 +1,70 @@
 ---
+import BaseLayout from '../components/layouts/BaseLayout.astro';
+import BlogList from '../components/BlogList.astro';
+import Container from '../components/Container.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import Section from '../components/Section.astro';
+import { homeSnapshot, site } from '../data/site';
+import { getFeaturedProjects, getLatestPosts } from '../lib/content';
 
+const [featuredProjects, latestPosts] = await Promise.all([
+  getFeaturedProjects(3),
+  getLatestPosts(3)
+]);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Portfolio">
+  <section class="relative flex min-h-[calc(100svh-81px)] items-center overflow-hidden border-b border-line/70">
+    <img
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 h-full w-full object-cover opacity-55"
+      src="/images/hero-structure.svg"
+    />
+    <Container>
+      <div class="relative z-10 mx-auto max-w-4xl text-center">
+        <h1 class="text-balance text-[clamp(4.5rem,13vw,9rem)] font-semibold leading-[0.9] tracking-[-0.08em]">
+          {site.name}
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-[1.7] text-muted sm:text-xl">
+          {site.subtitle}
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <Section
+    id="snapshot"
+    intro="A concise view of the work, experience, and focus shaping the practice."
+    title="Current / About Snapshot"
+  >
+    <ul class="border-y border-line/80">
+      {
+        homeSnapshot.map((item) => (
+          <li class="grid gap-4 border-b border-line/80 py-8 last:border-b-0 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-8">
+            <p class="editorial-label">{item.label}</p>
+            <p class="max-w-3xl">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section
+    id="featured-work"
+    intro="Selected projects built with an editorial approach to interface design: structured, restrained, and easy to navigate over time."
+    title="Featured Work"
+  >
+    <div class="space-y-20 sm:space-y-24">
+      {featuredProjects.map((project, index) => <ProjectRow index={index} project={project} />)}
+    </div>
+  </Section>
+
+  <Section
+    id="writing"
+    intro="Short essays on pace, structure, and building interfaces meant to be read as much as used."
+    title="Writing"
+  >
+    <BlogList posts={latestPosts} />
+  </Section>
+</BaseLayout>

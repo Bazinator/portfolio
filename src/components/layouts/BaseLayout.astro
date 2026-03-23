@@ -1,0 +1,42 @@
+---
+import Footer from './Footer.astro';
+import Navbar from './Navbar.astro';
+import '../../styles/global.css';
+import { site } from '../../data/site';
+
+interface Props {
+  description?: string;
+  title?: string;
+}
+
+const {
+  description = site.description,
+  title
+} = Astro.props;
+
+const pageTitle = title ? `${title} | ${site.name}` : site.name;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper" href="#content">
+      Skip to content
+    </a>
+    <Navbar pathname={Astro.url.pathname} />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

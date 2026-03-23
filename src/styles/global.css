@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", "Segoe UI", sans-serif;
+  --color-paper: #ffffff;
+  --color-ink: #111111;
+  --color-muted: #666666;
+  --color-line: #ddddda;
+  --color-soft: #f4f4f1;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-paper);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  background-image: radial-gradient(circle at top, rgba(17, 17, 17, 0.04), transparent 36%);
+  color: var(--color-ink);
+  font-feature-settings: "liga" 1, "calt" 1, "ss01" 1;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(17, 17, 17, 0.08);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  body {
+    @apply min-h-screen font-sans text-[15px] antialiased sm:text-base;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img {
+    @apply block max-w-full;
+  }
+
+  p {
+    @apply text-[1.03rem] leading-[1.75] text-muted;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-ink;
+  }
+}
+
+@layer components {
+  .editorial-label {
+    @apply text-[0.72rem] font-medium uppercase tracking-[0.24em] text-muted;
+  }
+
+  .page-title {
+    @apply text-[clamp(3rem,8vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.06em];
+  }
+
+  .section-title {
+    @apply text-[clamp(2.2rem,5vw,3.15rem)] font-semibold leading-tight tracking-[-0.045em];
+  }
+
+  .body-large {
+    @apply text-[1.12rem] leading-[1.82] text-muted;
+  }
+
+  .meta-list {
+    @apply flex flex-wrap gap-x-4 gap-y-2 text-[0.78rem] uppercase tracking-[0.16em] text-muted;
+  }
+
+  .prose-editorial {
+    @apply space-y-8;
+  }
+
+  .prose-editorial :where(h2) {
+    @apply mt-16 text-3xl font-semibold leading-tight tracking-[-0.035em];
+  }
+
+  .prose-editorial :where(h3) {
+    @apply mt-12 text-2xl font-semibold leading-tight tracking-[-0.025em];
+  }
+
+  .prose-editorial :where(p) {
+    @apply text-[1.08rem] leading-[1.88] text-muted;
+  }
+
+  .prose-editorial :where(ul),
+  .prose-editorial :where(ol) {
+    @apply space-y-3 pl-5 text-[1.04rem] leading-[1.78] text-muted;
+  }
+
+  .prose-editorial :where(li) {
+    @apply pl-2;
+  }
+
+  .prose-editorial :where(strong) {
+    @apply font-semibold text-ink;
+  }
+
+  .prose-editorial :where(a) {
+    @apply text-ink underline decoration-1 underline-offset-4 transition-opacity duration-200 hover:opacity-70;
+  }
+
+  .prose-editorial :where(blockquote) {
+    @apply border-l-2 pl-6 italic text-ink/80;
+  }
+
+  .prose-editorial :where(code) {
+    @apply rounded bg-soft px-1.5 py-0.5 text-[0.95em] text-ink;
+  }
+
+  .prose-editorial :where(pre) {
+    @apply overflow-x-auto rounded-2xl bg-soft px-5 py-4;
+  }
+
+  .prose-editorial :where(hr) {
+    @apply my-12 border-t border-line;
+  }
+}

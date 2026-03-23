@@ -1,0 +1,11 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#FBFBFA"/>
+  <rect x="100" y="100" width="1000" height="700" stroke="#111111" stroke-width="2"/>
+  <rect x="150" y="150" width="700" height="600" stroke="#111111" stroke-width="2"/>
+  <rect x="890" y="150" width="160" height="180" stroke="#111111" stroke-width="2"/>
+  <rect x="890" y="370" width="160" height="380" stroke="#111111" stroke-width="2"/>
+  <path d="M200 250H800" stroke="#D9D9D4" stroke-width="2"/>
+  <path d="M200 330H800" stroke="#E4E4E0" stroke-width="2"/>
+  <path d="M200 410H800" stroke="#D9D9D4" stroke-width="2"/>
+  <text x="150" y="82" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="4">STUDIO LEDGER</text>
+</svg>

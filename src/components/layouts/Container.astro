@@ -1,0 +1,15 @@
+---
+import Container from '../Container.astro';
+
+interface Props {
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+  narrow?: boolean;
+}
+
+const { as, class: className, narrow } = Astro.props as Props;
+---
+
+<Container as={as} class={className} narrow={narrow}>
+  <slot />
+</Container>

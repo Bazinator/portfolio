@@ -1,0 +1,11 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#FFFFFF"/>
+  <rect x="110" y="110" width="980" height="680" stroke="#111111" stroke-width="2"/>
+  <rect x="160" y="160" width="280" height="580" stroke="#111111" stroke-width="2"/>
+  <rect x="500" y="160" width="540" height="170" stroke="#111111" stroke-width="2"/>
+  <rect x="500" y="380" width="540" height="360" stroke="#111111" stroke-width="2"/>
+  <path d="M200 250H400" stroke="#D9D9D4" stroke-width="2"/>
+  <path d="M540 250H1000" stroke="#D9D9D4" stroke-width="2"/>
+  <path d="M540 450H1000" stroke="#D9D9D4" stroke-width="2"/>
+  <text x="160" y="82" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="4">FIELD NOTES ARCHIVE</text>
+</svg>

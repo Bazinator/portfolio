@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../components/layouts/BaseLayout.astro';
+import Container from '../../components/Container.astro';
+import ProjectRow from '../../components/ProjectRow.astro';
+import { getAllProjects } from '../../lib/content';
+
+const projects = await getAllProjects();
+---
+
+<BaseLayout description="Selected case studies across editorial websites, product systems, and research-driven interfaces." title="Projects">
+  <section class="border-b border-line/70 py-20 sm:py-24">
+    <Container>
+      <div class="max-w-3xl space-y-6">
+        <p class="editorial-label">Projects</p>
+        <h1 class="page-title">What inspires me, might help inspire you</h1>
+        <p class="body-large">
+          A full view of the projects: each one documented as a working system rather than a glossy artifact.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-24">
+    <Container>
+      <div class="space-y-20 sm:space-y-24">
+        {projects.map((project, index) => <ProjectRow index={index} project={project} />)}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

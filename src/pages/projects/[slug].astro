@@ -1,0 +1,115 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../components/layouts/BaseLayout.astro';
+import Container from '../../components/Container.astro';
+import { entrySlug } from '../../lib/content';
+import { formatDate } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+
+  return projects.map((project) => ({
+    params: { slug: entrySlug(project) },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props as { project: CollectionEntry<'projects'> };
+const { Content } = await render(project);
+---
+
+<BaseLayout description={project.data.description} title={project.data.title}>
+  <section class="border-b border-line/70 py-20 sm:py-24">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
+        <div class="max-w-3xl space-y-6">
+          <a class="editorial-label inline-flex items-center gap-3 hover:text-ink" href="/projects">
+            <span aria-hidden="true">/</span>
+            Back to projects
+          </a>
+          <h1 class="page-title">{project.data.title}</h1>
+          <p class="body-large max-w-2xl">{project.data.description}</p>
+        </div>
+
+        <aside class="space-y-8 border-t border-line/70 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+          <div class="space-y-3">
+            <p class="editorial-label">Date</p>
+            <p class="text-sm text-ink">{formatDate(project.data.date)}</p>
+          </div>
+          <div class="space-y-3">
+            <p class="editorial-label">Tech stack</p>
+            <ul class="space-y-2 text-sm text-muted">
+              {project.data.techStack.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-12 sm:py-16">
+    <Container>
+      <figure class="overflow-hidden border border-line/80 bg-soft">
+        <img
+          alt={`${project.data.title} hero visual`}
+          class="aspect-[16/10] h-full w-full object-cover"
+          src={project.data.image}
+        />
+      </figure>
+    </Container>
+  </section>
+
+  <section class="py-12 sm:py-16">
+    <Container>
+      <div class="space-y-20">
+        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+          <p class="editorial-label pt-1">Overview</p>
+          <p class="body-large max-w-3xl">{project.data.overview}</p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+          <p class="editorial-label pt-1">Problem</p>
+          <p class="body-large max-w-3xl">{project.data.problem}</p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+          <p class="editorial-label pt-1">Approach</p>
+          <div class="space-y-6 max-w-3xl">
+            {project.data.approach.map((point) => <p class="body-large">{point}</p>)}
+          </div>
+        </div>
+
+        {project.data.gallery.length > 0 && (
+          <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+            <p class="editorial-label pt-1">Screens</p>
+            <div class="grid gap-8 md:grid-cols-2">
+              {project.data.gallery.map((item, index) => (
+                <figure class:list={['space-y-4', index === 0 && 'md:col-span-2']}>
+                  <div class="overflow-hidden border border-line/80 bg-soft">
+                    <img alt={item.alt} class="aspect-[16/10] h-full w-full object-cover" src={item.src} />
+                  </div>
+                  {item.caption && <figcaption class="text-sm leading-7 text-muted">{item.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+          <p class="editorial-label pt-1">Learnings</p>
+          <ul class="max-w-3xl space-y-4">
+            {project.data.learnings.map((item) => <li class="body-large">{item}</li>)}
+          </ul>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+          <p class="editorial-label pt-1">Notes</p>
+          <article class="prose-editorial max-w-3xl">
+            <Content />
+          </article>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
