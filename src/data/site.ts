@@ -1,11 +1,11 @@
 export const site = {
   name: 'Michael Bazett',
-  role: 'Frontend engineer shaping quiet digital systems with clarity and restraint.',
+  role: 'Software Systems student building thoughtful software and documenting the process.',
   description:
-    'A thoughtful engineer with taste, documenting work with clarity and restraint.',
-  location: 'Los Angeles, California',
+    'I study software systems at SFU and use projects to learn, test ideas, and get better at building real things.',
+  location: 'BC, Canada',
   subtitle:
-    'Speed Gun and Cocaine, a design system for the 21st century. Built with Astro and React.',
+    'Interested in systems, useful software, and life long excellence.'
 };
 
 export const navigation = [
@@ -23,68 +23,61 @@ export const socialLinks = [
 
 export const homeSnapshot = [
   {
-    label: 'Current work',
+    label: 'Current',
     text:
-      'Designing and building content-rich product experiences for teams that value clarity, pace, and structure.'
+      'Studying Software Systems at SFU while building side projects in web software, data tools, and systems-oriented work.'
   },
   {
-    label: 'Past experience',
+    label: 'Background',
     text:
-      'Previously shipped internal tools, research archives, and design system foundations across studio and startup environments.'
+      'Most of my growth has come from learning in public through projects, coursework, and real responsibility outside tech.'
   },
   {
-    label: 'Focus areas',
+    label: 'Focus',
     text:
-      'Astro-first websites, design systems, product storytelling, and interfaces that stay legible as they grow.'
+      'I am drawn to working hard. I build things that have an impact, and solve problems.'
   }
 ];
 
 export const aboutNarrative = [
-  'I am a frontend engineer drawn to projects that need both structure and sensitivity. The work I enjoy most lives somewhere between product design, systems thinking, and editorial pacing.',
-  'My background spans product teams, design systems, and research-heavy environments where information has a way of becoming dense over time. That shaped how I build: reduce noise early, keep the hierarchy obvious, and leave room for the work itself to breathe.',
-  'I care about interfaces that feel calm in use, codebases that remain understandable six months later, and content systems that make thoughtful publishing easier rather than heavier.'
+  'I am a Software Systems student at Simon Fraser University who likes learning by building. Most of my projects start with curiosity: a problem I want to understand better, a tool I wish existed, or a system I want to take apart and rebuild.',
+  'I am still early in my path, so this site is not a victory lap. It is a record of what I am making, what I am learning, and how my thinking is changing over time. I care a lot more about becoming capable than sounding impressive.',
+  'Outside of school, I have worked in demanding environments that taught me consistency, communication, and how to stay calm under pressure. That shows up in how I approach software too: try to be useful, stay honest about what I know, and keep improving the fundamentals.'
 ];
 
 export const aboutFocus = [
-  'Editorial websites and content platforms',
-  'Design systems and reusable front-end foundations',
-  'Product interfaces with strong information hierarchy'
+  'Software systems and technical foundations',
+  'Projects that teach through building',
+  'Interfaces and tools that stay clear under real use'
 ];
 
 export const principles = [
-  'Clarity scales better than cleverness.',
-  'Spacing, rhythm, and type do more than ornament ever will.',
-  'Systems should make the next iteration easier, not just ship the current one.'
+  'Build things that teach you something real.',
+  'Clear thinking matters more than inflated language.',
+  'A project is stronger when it solves a real problem, not just looks impressive.'
 ];
 
 export const resumeExperience = [
   {
     period: '2024 - Present',
-    role: 'Senior Frontend Engineer',
-    company: 'Northline Studio',
+    role: 'Line Cook / Kitchen Team',
+    company: 'The Keg',
     description:
-      'Leading Astro and React builds for research labs, independent studios, and product teams that need durable content systems.'
+      'Worked in a high-pressure service environment requiring speed, communication, consistency, and calm execution under load.'
   },
   {
-    period: '2021 - 2024',
-    role: 'Product Engineer',
-    company: 'Signal Works',
+    period: '2024 - Present',
+    role: 'Software Systems Student',
+    company: 'Simon Fraser University',
     description:
-      'Built design systems, internal tooling, and structured editorial experiences across early-stage SaaS products.'
-  },
-  {
-    period: '2018 - 2021',
-    role: 'Interface Designer and Developer',
-    company: 'Field Office',
-    description:
-      'Designed and shipped archival, publishing, and operational interfaces for cultural and civic organizations.'
+      'Studying software systems while building personal and team projects in web software, tools, and applied technical work.'
   }
 ];
 
 export const resumeEducation = [
   {
-    period: '2014 - 2018',
-    title: 'B.S. in Interaction Design',
-    detail: 'University of Washington'
+    period: '2024 - Present',
+    title: 'B.Sc. in Software Systems',
+    detail: 'Simon Fraser University'
   }
 ];
