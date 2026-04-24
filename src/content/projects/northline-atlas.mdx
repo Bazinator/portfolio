@@ -1,42 +1,52 @@
 ---
-title: "Northline Atlas"
-description: "A content-rich planning platform that gave distributed teams a calmer way to track research, milestones, and decisions."
-date: 2025-10-14
+title: "Neighborhood News"
+description: "A civic information platform that turns fragmented Vancouver Open Data into neighborhood-specific updates people can actually use."
+date: 2026-01-01
 featured: true
 tags:
-  - Astro
-  - TypeScript
-  - TailwindCSS
-  - Content Design
-image: "/images/projects/atlas-overview.svg"
-overview: "Northline Atlas reframed a dense planning tool as an editorial workspace, making strategy, evidence, and decisions readable in a single system."
-problem: "The original product had grown into a patchwork of dashboards and filters. Key information was technically present, but it was rarely legible at the moment a team needed to make a decision."
+  - FastAPI
+  - PostgreSQL
+  - PostGIS
+  - GitHub Actions
+  - Civic Tech
+image: "/images/projects/neighborhood-news-overview.svg"
+overview: "Neighborhood News reframed public civic datasets as a local awareness tool, helping residents see nearby road closures, city projects, service requests, permits, and council activity through one searchable neighborhood feed."
+problem: "Vancouver publishes valuable civic data, but the information is spread across separate open-data endpoints and is difficult to interpret at a local level. Residents may care deeply about what is happening near them, but the raw datasets do not naturally answer simple questions like what changed in my neighborhood this week."
 approach:
-  - "I reduced the interface to a small set of persistent layout rules: one primary column for narrative context, one secondary rail for status, and a restrained type scale that could carry both reading and scanning."
-  - "Instead of adding more widgets, I treated each module like a page in a working document. Teams could move from overview to evidence to decisions without losing orientation."
-  - "The design system emphasized durable tokens, predictable spacing, and lightweight authoring patterns so new features could inherit the same sense of order."
+  - "I built an automated ETL pipeline using GitHub Actions to ingest Vancouver Open Data records on a scheduled basis, transform them into a shared event format, and keep the database current without manual updates."
+  - "The backend used FastAPI with PostgreSQL and PostGIS so civic events could be stored with temporal, categorical, and geographic structure rather than treated as flat records."
+  - "I implemented idempotent upsert logic to prevent duplicate records across repeated data pulls, allowing the system to safely process evolving open-data sources over time."
+  - "Geospatial matching was handled directly in the database with PostGIS, mapping events to neighborhood boundaries without pushing spatial logic into the application layer."
+  - "The API exposed practical filters for date range, event type, and neighborhood, making the data useful for a frontend experience focused on local context rather than raw civic records."
 techStack:
-  - Astro
-  - TypeScript
-  - TailwindCSS
-  - MDX
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - PostGIS
+  - GitHub Actions
+  - Vancouver Open Data API
 learnings:
-  - "Structure is often more valuable than novelty when a product is already information-dense."
-  - "Editorial hierarchy can improve operational speed because people spend less time deciphering what matters."
-  - "Small, consistent layout rules scale better than bespoke components under pressure."
+  - "A strong data model matters more than a flashy interface when the core challenge is making messy public information trustworthy and usable."
+  - "Geospatial queries belong close to the data when location is central to the product."
+  - "Automated ingestion only works if repeated runs are safe, predictable, and resistant to duplicate data."
+  - "Civic datasets become more valuable when they are organized around the way people experience a city: by place, time, and local relevance."
 gallery:
-  - src: "/images/projects/atlas-flow.svg"
-    alt: "A structural map showing how Northline Atlas sequences context, evidence, and decision states."
-    caption: "Information moves through the product as a sequence rather than a collage."
-  - src: "/images/projects/atlas-detail.svg"
-    alt: "A detail screen from Northline Atlas with long-form content and status metadata."
-    caption: "Long-form context and operational status live together without competing."
+  - src: "/images/projects/neighborhood-news-map.svg"
+    alt: "A map-based view showing civic events grouped by Vancouver neighborhood."
+    caption: "Civic records become easier to understand when organized around neighborhood boundaries."
+  - src: "/images/projects/neighborhood-news-api.svg"
+    alt: "A backend flow diagram showing open-data ingestion, PostGIS storage, and filtered API access."
+    caption: "The system turns raw open-data feeds into queryable local events through an automated pipeline."
 ---
 
 ## Outcome
 
-The final product felt less like software trying to organize everything at once and more like a workspace with a clear reading order. Teams reported that planning reviews became shorter because the interface carried more of the narrative for them.
+The final project turned scattered civic datasets into a more coherent neighborhood-level information system. Instead of forcing users to search through separate public data sources, the platform created a unified event feed that could be filtered by location, date range, and event type.
+
+The backend was designed to handle over 1,000 civic event records with scheduled ingestion, idempotent updates, spatial neighborhood matching, and indexed API queries. This made the project feel less like a static hackathon demo and more like the foundation for a practical civic awareness tool.
 
 ## What carried forward
 
-The most durable part of the project was not a single component. It was the decision to treat every new surface as part of the same editorial system. That constraint made follow-on work faster because the product no longer needed to invent a new visual language for each feature.
+The most durable part of the project was the decision to treat open data as a pipeline problem before treating it as a frontend problem. Once the data had a consistent event shape, geographic structure, and safe update process, the product became much easier to extend.
+
+That lesson carries into future projects: when the domain is messy, the architecture has to create order before the interface can create clarity.
