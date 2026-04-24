@@ -18,13 +18,13 @@ const {
 } = Astro.props;
 ---
 
-<section id={id} class:list={['py-24 sm:py-28', className]}>
+<section id={id} class:list={['py-16 sm:py-20', className]}>
   <Container narrow={narrow}>
     {
       (title || intro) && (
-        <div class="mb-14 max-w-2xl">
+        <div class="mb-10 max-w-2xl">
           {title && <h2 class="section-title">{title}</h2>}
-          {intro && <p class="mt-5 body-large">{intro}</p>}
+          {intro && <p class="mt-4 body-large">{intro}</p>}
         </div>
       )
     }

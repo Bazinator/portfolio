@@ -7,20 +7,20 @@ import { getAllPosts } from '../../lib/content';
 const posts = await getAllPosts();
 ---
 
-<BaseLayout description="Writing on interface clarity, pacing, design systems, and the craft of building quieter software." title="Writing">
-  <section class="border-b border-line/70 py-20 sm:py-24">
+<BaseLayout description="Writing on systems, interfaces, projects, and the craft of building useful software." title="Writing">
+  <section class="border-b border-line/70 pt-28 pb-14 sm:pt-32 sm:pb-16">
     <Container>
-      <div class="max-w-3xl space-y-6">
+      <div class="max-w-3xl space-y-5">
         <p class="editorial-label">Writing</p>
-        <h1 class="page-title">Notes on systems, reading, and the quiet parts of interface work.</h1>
+        <h1 class="page-title">Notes from the build log.</h1>
         <p class="body-large">
-          Essays and process notes focused on building products that remain calm, legible, and useful as they grow.
+          Essays and process notes on systems, interfaces, and the small decisions that make work clearer.
         </p>
       </div>
     </Container>
   </section>
 
-  <section class="py-20 sm:py-24">
+  <section class="py-14 sm:py-16">
     <Container>
       <BlogList posts={posts} />
     </Container>

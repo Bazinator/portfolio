@@ -5,20 +5,22 @@ export const site = {
     'I study software systems at SFU and use projects to learn, test ideas, and get better at building real things.',
   location: 'BC, Canada',
   subtitle:
-    'Interested in systems, useful software, and life long excellence.'
+    'Building useful software, studying systems, and keeping notes while the work gets sharper.'
 };
 
 export const navigation = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Writing' },
-  { href: '/about', label: 'About' }
+  { href: '/writing', label: 'Writing' },
+  { href: '/about', label: 'About' },
+  { href: '/links', label: 'Links' },
+  { href: '/files/MichaelBazettResume.pdf', label: 'Resume', external: true }
 ];
 
 export const socialLinks = [
   { href: 'https://github.com/bazinator', label: 'GitHub', external: true },
   { href: 'https://www.linkedin.com/in/michael-bazett/', label: 'LinkedIn', external: true },
-  { href: '/resume', label: 'Resume', external: false }
+  { href: '/files/MichaelBazettResume.pdf', label: 'Resume', external: true }
 ];
 
 export const homeSnapshot = [
@@ -79,5 +81,38 @@ export const resumeEducation = [
     period: '2024 - Present',
     title: 'B.Sc. in Software Systems',
     detail: 'Simon Fraser University'
+  }
+];
+
+export const referenceLinks = [
+  {
+    category: 'Software',
+    title: 'Astro Docs',
+    url: 'https://docs.astro.build/',
+    note: 'Framework notes, content collections, and deployment references.'
+  },
+  {
+    category: 'Software',
+    title: 'MDN Web Docs',
+    url: 'https://developer.mozilla.org/',
+    note: 'The web platform reference I keep coming back to.'
+  },
+  {
+    category: 'Systems',
+    title: 'PostgreSQL Documentation',
+    url: 'https://www.postgresql.org/docs/',
+    note: 'Practical reference for data modeling, SQL, and database behavior.'
+  },
+  {
+    category: 'Design',
+    title: 'Laws of UX',
+    url: 'https://lawsofux.com/',
+    note: 'A quick index of interaction principles and interface psychology.'
+  },
+  {
+    category: 'Reading',
+    title: 'Simon Fraser University Library',
+    url: 'https://www.lib.sfu.ca/',
+    note: 'Research starting point for coursework, papers, and deeper reading.'
   }
 ];

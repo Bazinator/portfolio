@@ -7,22 +7,23 @@ interface Props {
   description: string;
   title: string;
   date: Date;
+  backHref?: string;
 }
 
-const { description, title, date } = Astro.props as Props;
+const { description, title, date, backHref = '/writing' } = Astro.props as Props;
 ---
 
 <BaseLayout description={description} title={title}>
-  <section class="border-b border-line/70 py-20 sm:py-24">
+  <section class="border-b border-line/70 pt-28 pb-14 sm:pt-32 sm:pb-16">
     <Container narrow={true}>
       <a
         class="editorial-label inline-flex items-center gap-3 hover:text-ink"
-        href="/blog"
+        href={backHref}
       >
-        <span aria-hidden="true">/</span>
+        <span class="text-accent" aria-hidden="true">/</span>
         Back to writing
       </a>
-      <div class="mt-10 max-w-3xl space-y-6">
+      <div class="mt-8 max-w-3xl space-y-5">
         <time class="editorial-label block" datetime={date.toISOString()}>
           {formatDate(date)}
         </time>
@@ -32,7 +33,7 @@ const { description, title, date } = Astro.props as Props;
     </Container>
   </section>
 
-  <section class="py-20 sm:py-24">
+  <section class="py-14 sm:py-16">
     <Container narrow={true}>
       <article class="prose-editorial">
         <slot />

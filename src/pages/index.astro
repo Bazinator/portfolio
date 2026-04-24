@@ -14,34 +14,40 @@ const [featuredProjects, latestPosts] = await Promise.all([
 ---
 
 <BaseLayout title="Portfolio">
-  <section class="relative flex min-h-[calc(100svh-81px)] items-center overflow-hidden border-b border-line/70">
-    <img
-      alt=""
-      aria-hidden="true"
-      class="absolute inset-0 h-full w-full object-cover opacity-55"
-      src="/images/hero-structure.svg"
-    />
+  <section class="relative flex min-h-[82svh] items-end overflow-hidden border-b border-line/70 bg-night px-0 pt-24 text-paper">
+    <div class="absolute inset-0 visual-treatment" aria-hidden="true">
+      <img class="h-full w-full object-cover opacity-35" src="/images/leonardo.jpg" alt="" />
+    </div>
     <Container>
-      <div class="relative z-10 mx-auto max-w-4xl text-center">
-        <h1 class="text-balance text-[clamp(4.5rem,13vw,9rem)] font-semibold leading-[0.9] tracking-[-0.08em]">
+      <div class="relative z-10 max-w-4xl pb-14 sm:pb-16">
+        <p class="editorial-label mb-5 text-paper/62">Portfolio / Software Systems</p>
+        <h1 class="text-balance text-[clamp(4rem,12vw,8.5rem)] font-semibold leading-[0.88] tracking-[-0.06em] text-paper">
           {site.name}
         </h1>
-        <p class="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-[1.7] text-muted sm:text-xl">
+        <p class="mt-6 max-w-2xl text-pretty text-lg leading-[1.6] text-paper/72 sm:text-xl">
           {site.subtitle}
         </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="border border-paper/20 px-4 py-2 text-sm font-semibold text-paper transition-colors hover:border-accent hover:text-accent" href="/projects">
+            Projects
+          </a>
+          <a class="border border-paper/20 px-4 py-2 text-sm font-semibold text-paper transition-colors hover:border-accent hover:text-accent" href="/writing">
+            Writing
+          </a>
+        </div>
       </div>
     </Container>
   </section>
 
   <Section
     id="snapshot"
-    intro="A concise view of the work, experience, and focus shaping the practice."
-    title="Current / About Snapshot"
+    intro="A tighter view of the work, experience, and focus shaping the practice."
+    title="Now"
   >
     <ul class="border-y border-line/80">
       {
         homeSnapshot.map((item) => (
-          <li class="grid gap-4 border-b border-line/80 py-8 last:border-b-0 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-8">
+          <li class="grid gap-4 border-b border-line/80 py-6 last:border-b-0 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-8">
             <p class="editorial-label">{item.label}</p>
             <p class="max-w-3xl">{item.text}</p>
           </li>
@@ -52,17 +58,18 @@ const [featuredProjects, latestPosts] = await Promise.all([
 
   <Section
     id="featured-work"
-    intro="Selected projects built with an editorial approach to interface design: structured, restrained, and easy to navigate over time."
-    title="Featured Work"
+    intro="Selected projects, kept compact and readable until the images are ready to carry more of the page."
+    title="Projects"
   >
-    <div class="space-y-20 sm:space-y-24">
+    <div class="space-y-12 sm:space-y-14">
       {featuredProjects.map((project, index) => <ProjectRow index={index} project={project} />)}
     </div>
   </Section>
 
   <Section
     id="writing"
-    intro="Short essays on pace, structure, and building interfaces meant to be read as much as used."
+    class="border-t border-line/70"
+    intro="Short essays and notes on systems, interfaces, and the process of getting better at building."
     title="Writing"
   >
     <BlogList posts={latestPosts} />

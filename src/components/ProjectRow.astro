@@ -21,14 +21,14 @@ const {
 const projectHref = href ?? projectPath(project);
 ---
 
-<article class="group border-t border-line/80 pt-12 first:pt-0">
-  <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-    <div class:list={['space-y-6', reversed && 'lg:order-2']}>
+<article class="group border-t border-line/80 pt-9 first:pt-0">
+  <div class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-12">
+    <div class:list={['space-y-5', reversed && 'lg:order-2']}>
       <p class="editorial-label">
         {String(index + 1).padStart(2, '0')}
       </p>
-      <div class="space-y-4">
-        <h3 class="text-3xl font-semibold leading-tight tracking-[-0.04em] sm:text-4xl">
+      <div class="space-y-3">
+        <h3 class="text-2xl font-semibold leading-tight tracking-[-0.035em] sm:text-3xl">
           <a class="hover:text-muted" href={projectHref}>
             {project.data.title}
           </a>
@@ -39,24 +39,24 @@ const projectHref = href ?? projectPath(project);
         {project.data.tags.map((tag) => <li>{tag}</li>)}
       </ul>
       <a
-        class="inline-flex items-center gap-3 text-sm font-medium tracking-[0.08em] text-ink uppercase transition-transform duration-300 hover:translate-x-1"
+        class="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.1em] text-ink uppercase transition-transform duration-300 hover:translate-x-1"
         href={projectHref}
       >
         View Case Study
-        <span aria-hidden="true">/</span>
+        <span class="text-accent" aria-hidden="true">/</span>
       </a>
     </div>
 
     <a
       class:list={[
-        'overflow-hidden border border-line/80 bg-soft transition-transform duration-500 hover:-translate-y-1',
+        'visual-treatment border border-night/10 transition-transform duration-500 hover:-translate-y-1',
         reversed ? 'lg:order-1' : 'lg:order-2'
       ]}
       href={projectHref}
     >
       <img
         alt={`${project.data.title} project preview`}
-        class="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.015]"
+        class="aspect-[16/10] h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
         loading="lazy"
         src={project.data.image}
       />

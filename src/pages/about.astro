@@ -4,39 +4,97 @@ import Container from '../components/Container.astro';
 import { aboutFocus, aboutNarrative, principles, site } from '../data/site';
 ---
 
-<BaseLayout description={`About ${site.name}, a frontend engineer focused on editorial interfaces, design systems, and quieter software.`} title="About">
-  <section class="border-b border-line/70 py-20 sm:py-24">
-    <Container>
-      <div class="max-w-3xl space-y-6">
-        <p class="editorial-label">About</p>
-        <h1 class="page-title">Building digital spaces with patience, precision, and a sense of calm.</h1>
-        <p class="body-large">{site.role}</p>
+<BaseLayout description={`About ${site.name}, a Software Systems student building useful software and learning in public.`} title="About">
+  <section class="about-intro relative min-h-[170svh] bg-night text-paper" data-about-intro>
+    <div class="sticky top-0 flex min-h-svh items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,85,70,0.16),transparent_30%),linear-gradient(180deg,rgba(6,16,4,0.1),#061004)]"></div>
+      <div class="vitruvian-stage relative flex aspect-square w-[min(82vw,620px)] items-center justify-center" data-vitruvian-stage>
+        <img
+          alt="Leonardo da Vinci's Vitruvian Man"
+          class="h-full w-full object-contain transition-opacity duration-150"
+          style="opacity: calc(0.92 - var(--about-progress, 0) * 0.52)"
+          src="/images/leonardo-da-vinci-vitruvian-man-2.jpg"
+        />
+        <h1 class="absolute inset-x-0 top-1/2 mx-auto max-w-[12ch] -translate-y-1/2 text-center text-[clamp(3.2rem,10vw,7.8rem)] font-semibold leading-[0.86] tracking-[-0.055em] text-paper mix-blend-difference">
+          {site.name}
+        </h1>
       </div>
-    </Container>
+      <div class="pointer-events-none absolute inset-0 bg-night opacity-[var(--about-progress,0)] transition-opacity duration-150"></div>
+    </div>
   </section>
 
-  <section class="py-20 sm:py-24">
+  <section class="dark-section -mt-[70svh] relative z-10 border-t border-paper/10 py-16 sm:py-20">
     <Container>
-      <div class="grid gap-16 lg:grid-cols-[minmax(0,1.8fr)_280px] lg:gap-20">
-        <article class="prose-editorial">
-          {aboutNarrative.map((paragraph) => <p>{paragraph}</p>)}
-        </article>
-
-        <aside class="space-y-12 border-t border-line/70 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-          <div class="space-y-4">
-            <p class="editorial-label">Focus</p>
-            <ul class="space-y-3 text-sm leading-7 text-muted">
-              {aboutFocus.map((item) => <li>{item}</li>)}
-            </ul>
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)] lg:gap-14">
+        <div class="space-y-8">
+          <div class="max-w-3xl space-y-5">
+            <p class="editorial-label">About</p>
+            <h2 class="section-title">I am trying to become the kind of builder who can be trusted with real problems.</h2>
+            <p class="body-large">{site.role}</p>
           </div>
-          <div class="space-y-4">
-            <p class="editorial-label">Principles</p>
-            <ul class="space-y-3 text-sm leading-7 text-muted">
-              {principles.map((item) => <li>{item}</li>)}
-            </ul>
+
+          <article class="prose-editorial max-w-3xl">
+            {aboutNarrative.map((paragraph) => <p>{paragraph}</p>)}
+          </article>
+        </div>
+
+        <aside class="space-y-8">
+          <figure class="overflow-hidden border border-paper/10">
+            <img
+              alt="Michael's desk setup"
+              class="aspect-[4/5] h-full w-full object-cover"
+              loading="lazy"
+              src="/images/personal/deskSetup.JPG"
+            />
+          </figure>
+          <div class="grid grid-cols-2 gap-3">
+            <img
+              alt="SFU campus in snow"
+              class="aspect-square h-full w-full object-cover"
+              loading="lazy"
+              src="/images/personal/snowySFU.JPG"
+            />
+            <img
+              alt="A mountain trail and lake"
+              class="aspect-square h-full w-full object-cover"
+              loading="lazy"
+              src="/images/personal/heatherTrailLake.JPG"
+            />
           </div>
         </aside>
       </div>
+
+      <div class="mt-14 grid gap-8 border-t border-paper/10 pt-10 md:grid-cols-2">
+        <div class="space-y-4">
+          <p class="editorial-label">Focus</p>
+          <ul class="space-y-3 text-sm leading-7 text-paper/72">
+            {aboutFocus.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <p class="editorial-label">Principles</p>
+          <ul class="space-y-3 text-sm leading-7 text-paper/72">
+            {principles.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
     </Container>
   </section>
+
+  <script>
+    const intro = document.querySelector<HTMLElement>('[data-about-intro]');
+    const stage = document.querySelector<HTMLElement>('[data-vitruvian-stage]');
+
+    const updateAboutProgress = () => {
+      if (!intro || !stage) return;
+      const rect = intro.getBoundingClientRect();
+      const scrollable = Math.max(1, rect.height - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+      stage.style.setProperty('--about-progress', progress.toFixed(3));
+    };
+
+    updateAboutProgress();
+    window.addEventListener('scroll', updateAboutProgress, { passive: true });
+    window.addEventListener('resize', updateAboutProgress);
+  </script>
 </BaseLayout>

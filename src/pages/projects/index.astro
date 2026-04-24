@@ -7,22 +7,22 @@ import { getAllProjects } from '../../lib/content';
 const projects = await getAllProjects();
 ---
 
-<BaseLayout description="Selected case studies across editorial websites, product systems, and research-driven interfaces." title="Projects">
-  <section class="border-b border-line/70 py-20 sm:py-24">
+<BaseLayout description="Selected projects across software systems, civic data, web tools, and applied technical work." title="Projects">
+  <section class="border-b border-line/70 pt-28 pb-14 sm:pt-32 sm:pb-16">
     <Container>
-      <div class="max-w-3xl space-y-6">
+      <div class="max-w-3xl space-y-5">
         <p class="editorial-label">Projects</p>
-        <h1 class="page-title">What inspires me, might help inspire you</h1>
+        <h1 class="page-title">Useful systems, built in public.</h1>
         <p class="body-large">
-          A full view of the projects: each one documented as a working system rather than a glossy artifact.
+          A compact record of projects, experiments, and case studies from the workbench.
         </p>
       </div>
     </Container>
   </section>
 
-  <section class="py-20 sm:py-24">
+  <section class="py-14 sm:py-16">
     <Container>
-      <div class="space-y-20 sm:space-y-24">
+      <div class="space-y-12 sm:space-y-14">
         {projects.map((project, index) => <ProjectRow index={index} project={project} />)}
       </div>
     </Container>

@@ -2,11 +2,14 @@
 
 @theme {
   --font-sans: "Inter", "Helvetica Neue", "Segoe UI", sans-serif;
-  --color-paper: #ffffff;
-  --color-ink: #111111;
-  --color-muted: #666666;
-  --color-line: #ddddda;
-  --color-soft: #f4f4f1;
+  --color-paper: #f5f1e8;
+  --color-ink: #10130d;
+  --color-muted: #737a62;
+  --color-line: #d7d0bf;
+  --color-soft: #ece5d6;
+  --color-night: #061004;
+  --color-moss: #70865d;
+  --color-accent: #ff5546;
 }
 
 :root {
@@ -20,14 +23,16 @@ html {
 
 body {
   background-color: var(--color-paper);
-  background-image: radial-gradient(circle at top, rgba(17, 17, 17, 0.04), transparent 36%);
+  background-image:
+    linear-gradient(180deg, rgba(6, 16, 4, 0.04), transparent 24rem),
+    radial-gradient(circle at 15% 0%, rgba(255, 85, 70, 0.12), transparent 17rem);
   color: var(--color-ink);
   font-feature-settings: "liga" 1, "calt" 1, "ss01" 1;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: rgba(17, 17, 17, 0.08);
+  background: rgba(255, 85, 70, 0.24);
 }
 
 @layer base {
@@ -48,7 +53,7 @@ body {
   }
 
   p {
-    @apply text-[1.03rem] leading-[1.75] text-muted;
+    @apply text-[1rem] leading-[1.68] text-muted;
   }
 
   h1,
@@ -63,23 +68,23 @@ body {
 
 @layer components {
   .editorial-label {
-    @apply text-[0.72rem] font-medium uppercase tracking-[0.24em] text-muted;
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted;
   }
 
   .page-title {
-    @apply text-[clamp(3rem,8vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.06em];
+    @apply text-[clamp(2.8rem,7vw,5.2rem)] font-semibold leading-[0.94] tracking-[-0.045em];
   }
 
   .section-title {
-    @apply text-[clamp(2.2rem,5vw,3.15rem)] font-semibold leading-tight tracking-[-0.045em];
+    @apply text-[clamp(2rem,4vw,2.85rem)] font-semibold leading-tight tracking-[-0.035em];
   }
 
   .body-large {
-    @apply text-[1.12rem] leading-[1.82] text-muted;
+    @apply text-[1.06rem] leading-[1.72] text-muted;
   }
 
   .meta-list {
-    @apply flex flex-wrap gap-x-4 gap-y-2 text-[0.78rem] uppercase tracking-[0.16em] text-muted;
+    @apply flex flex-wrap gap-x-3 gap-y-2 text-[0.72rem] uppercase tracking-[0.12em] text-muted;
   }
 
   .prose-editorial {
@@ -95,7 +100,7 @@ body {
   }
 
   .prose-editorial :where(p) {
-    @apply text-[1.08rem] leading-[1.88] text-muted;
+    @apply text-[1.04rem] leading-[1.78] text-muted;
   }
 
   .prose-editorial :where(ul),
@@ -124,10 +129,44 @@ body {
   }
 
   .prose-editorial :where(pre) {
-    @apply overflow-x-auto rounded-2xl bg-soft px-5 py-4;
+    @apply overflow-x-auto bg-soft px-5 py-4;
   }
 
   .prose-editorial :where(hr) {
     @apply my-12 border-t border-line;
+  }
+
+  .visual-treatment {
+    @apply relative overflow-hidden bg-night;
+  }
+
+  .visual-treatment::before {
+    content: "";
+    @apply absolute inset-0 opacity-80;
+    background:
+      linear-gradient(135deg, rgba(255, 85, 70, 0.22), transparent 38%),
+      radial-gradient(circle at 82% 18%, rgba(112, 134, 93, 0.72), transparent 32%),
+      linear-gradient(180deg, rgba(245, 241, 232, 0.06), rgba(6, 16, 4, 0.94));
+  }
+
+  .visual-treatment img {
+    @apply relative z-10 opacity-70 mix-blend-screen saturate-[0.85] contrast-125;
+  }
+
+  .dark-section {
+    @apply bg-night text-paper;
+  }
+
+  .dark-section p,
+  .dark-section .body-large,
+  .dark-section .editorial-label {
+    color: rgba(245, 241, 232, 0.72);
+  }
+
+  .dark-section h1,
+  .dark-section h2,
+  .dark-section h3,
+  .dark-section h4 {
+    color: var(--color-paper);
   }
 }

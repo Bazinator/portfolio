@@ -20,12 +20,12 @@ const { Content } = await render(project);
 ---
 
 <BaseLayout description={project.data.description} title={project.data.title}>
-  <section class="border-b border-line/70 py-20 sm:py-24">
+  <section class="border-b border-line/70 pt-28 pb-14 sm:pt-32 sm:pb-16">
     <Container>
       <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
-        <div class="max-w-3xl space-y-6">
+        <div class="max-w-3xl space-y-5">
           <a class="editorial-label inline-flex items-center gap-3 hover:text-ink" href="/projects">
-            <span aria-hidden="true">/</span>
+            <span class="text-accent" aria-hidden="true">/</span>
             Back to projects
           </a>
           <h1 class="page-title">{project.data.title}</h1>
@@ -48,9 +48,9 @@ const { Content } = await render(project);
     </Container>
   </section>
 
-  <section class="py-12 sm:py-16">
+  <section class="py-10 sm:py-12">
     <Container>
-      <figure class="overflow-hidden border border-line/80 bg-soft">
+      <figure class="visual-treatment border border-night/10">
         <img
           alt={`${project.data.title} hero visual`}
           class="aspect-[16/10] h-full w-full object-cover"
@@ -60,20 +60,20 @@ const { Content } = await render(project);
     </Container>
   </section>
 
-  <section class="py-12 sm:py-16">
+  <section class="py-12 sm:py-14">
     <Container>
-      <div class="space-y-20">
-        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+      <div class="space-y-14">
+        <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
           <p class="editorial-label pt-1">Overview</p>
           <p class="body-large max-w-3xl">{project.data.overview}</p>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+        <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
           <p class="editorial-label pt-1">Problem</p>
           <p class="body-large max-w-3xl">{project.data.problem}</p>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+        <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
           <p class="editorial-label pt-1">Approach</p>
           <div class="space-y-6 max-w-3xl">
             {project.data.approach.map((point) => <p class="body-large">{point}</p>)}
@@ -81,12 +81,12 @@ const { Content } = await render(project);
         </div>
 
         {project.data.gallery.length > 0 && (
-          <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+          <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
             <p class="editorial-label pt-1">Screens</p>
             <div class="grid gap-8 md:grid-cols-2">
               {project.data.gallery.map((item, index) => (
                 <figure class:list={['space-y-4', index === 0 && 'md:col-span-2']}>
-                  <div class="overflow-hidden border border-line/80 bg-soft">
+                  <div class="visual-treatment border border-night/10">
                     <img alt={item.alt} class="aspect-[16/10] h-full w-full object-cover" src={item.src} />
                   </div>
                   {item.caption && <figcaption class="text-sm leading-7 text-muted">{item.caption}</figcaption>}
@@ -96,14 +96,14 @@ const { Content } = await render(project);
           </div>
         )}
 
-        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+        <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
           <p class="editorial-label pt-1">Learnings</p>
           <ul class="max-w-3xl space-y-4">
             {project.data.learnings.map((item) => <li class="body-large">{item}</li>)}
           </ul>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+        <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
           <p class="editorial-label pt-1">Notes</p>
           <article class="prose-editorial max-w-3xl">
             <Content />

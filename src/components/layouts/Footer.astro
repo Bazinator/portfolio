@@ -3,17 +3,17 @@ import Container from '../Container.astro';
 import { site, socialLinks } from '../../data/site';
 ---
 
-<footer class="border-t border-line/70 py-10">
+<footer class="border-t border-line/70 bg-paper py-8">
   <Container>
     <div class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-      <div class="max-w-md space-y-3">
+      <div class="max-w-md space-y-2">
         <p class="editorial-label">Portfolio</p>
         <p>
           {site.description}
         </p>
       </div>
 
-      <ul class="flex flex-wrap gap-5 text-sm text-muted">
+      <ul class="flex flex-wrap gap-5 text-sm font-medium text-muted">
         {
           socialLinks.map((link) => (
             <li>
