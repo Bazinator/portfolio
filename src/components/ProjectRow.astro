@@ -19,9 +19,10 @@ const {
 } = Astro.props as Props;
 
 const projectHref = href ?? projectPath(project);
+const projectLinks = project.data.links;
 ---
 
-<article class="group border-t border-line/80 pt-9 first:pt-0">
+<article class="group border-t pt-9 first:pt-0">
   <div class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-12">
     <div class:list={['space-y-5', reversed && 'lg:order-2']}>
       <p class="editorial-label">
@@ -29,27 +30,51 @@ const projectHref = href ?? projectPath(project);
       </p>
       <div class="space-y-3">
         <h3 class="text-2xl font-semibold leading-tight tracking-[-0.035em] sm:text-3xl">
-          <a class="hover:text-muted" href={projectHref}>
+          <a class="hover:text-[var(--theme-muted)]" href={projectHref}>
             {project.data.title}
           </a>
         </h3>
         <p class="body-large max-w-xl">{project.data.description}</p>
       </div>
+      {(projectLinks.github || projectLinks.demo) && (
+        <div class="flex flex-wrap gap-3">
+          {projectLinks.github && (
+            <a
+              class="btn btn-secondary"
+              href={projectLinks.github}
+              rel="noreferrer"
+              target="_blank"
+            >
+              GitHub
+            </a>
+          )}
+          {projectLinks.demo && (
+            <a
+              class="btn btn-primary"
+              href={projectLinks.demo}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Live Demo
+            </a>
+          )}
+        </div>
+      )}
       <ul class="meta-list">
         {project.data.tags.map((tag) => <li>{tag}</li>)}
       </ul>
       <a
-        class="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.1em] text-ink uppercase transition-transform duration-300 hover:translate-x-1"
+        class="text-action transition-transform duration-300 hover:translate-x-1"
         href={projectHref}
       >
         View Case Study
-        <span class="text-accent" aria-hidden="true">/</span>
+        <span class="action-mark" aria-hidden="true">/</span>
       </a>
     </div>
 
     <a
       class:list={[
-        'visual-treatment border border-night/10 transition-transform duration-500 hover:-translate-y-1',
+        'visual-treatment border transition-transform duration-500 hover:-translate-y-1',
         reversed ? 'lg:order-1' : 'lg:order-2'
       ]}
       href={projectHref}

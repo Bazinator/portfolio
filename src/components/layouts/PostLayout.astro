@@ -14,13 +14,13 @@ const { description, title, date, backHref = '/writing' } = Astro.props as Props
 ---
 
 <BaseLayout description={description} title={title}>
-  <section class="border-b border-line/70 pt-28 pb-14 sm:pt-32 sm:pb-16">
+  <section class="page-hero">
     <Container narrow={true}>
       <a
-        class="editorial-label inline-flex items-center gap-3 hover:text-ink"
+        class="btn btn-ghost editorial-label"
         href={backHref}
       >
-        <span class="text-accent" aria-hidden="true">/</span>
+        <span class="action-mark" aria-hidden="true">/</span>
         Back to writing
       </a>
       <div class="mt-8 max-w-3xl space-y-5">

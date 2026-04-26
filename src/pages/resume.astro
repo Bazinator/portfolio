@@ -5,7 +5,7 @@ import { resumeEducation, resumeExperience, site } from '../data/site';
 ---
 
 <BaseLayout description={`Selected experience and background for ${site.name}.`} title="Resume">
-  <section class="border-b border-line/70 py-20 sm:py-24">
+  <section class="page-hero">
     <Container>
       <div class="max-w-3xl space-y-6">
         <p class="editorial-label">Resume</p>
@@ -13,6 +13,15 @@ import { resumeEducation, resumeExperience, site } from '../data/site';
         <p class="body-large">
           <i>I care about all the work I produce</i>
         </p>
+        <a
+          class="btn btn-secondary text-sm normal-case tracking-normal"
+          href="/files/MichaelBazettResume.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open PDF
+          <span class="action-mark" aria-hidden="true">/</span>
+        </a>
       </div>
     </Container>
   </section>
@@ -22,10 +31,10 @@ import { resumeEducation, resumeExperience, site } from '../data/site';
       <div class="space-y-20">
         <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
           <p class="editorial-label pt-1">Experience</p>
-          <div class="border-y border-line/80">
+          <div class="border-y">
             {
               resumeExperience.map((item) => (
-                <article class="grid gap-4 border-b border-line/80 py-8 last:border-b-0 sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-8">
+                <article class="grid gap-4 border-b py-8 last:border-b-0 sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-8">
                   <p class="editorial-label">{item.period}</p>
                   <div class="space-y-3">
                     <h2 class="text-2xl font-semibold tracking-[-0.03em]">

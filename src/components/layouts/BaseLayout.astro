@@ -18,15 +18,31 @@ const pageTitle = title ? `${title} | ${site.name}` : site.name;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="green">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon1.png" />
+    <link rel="icon" href="/favicon1.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#061004" />
     <meta name="description" content={description} />
+    <script is:inline>
+      (() => {
+        const fallbackTheme = 'green';
+        const getThemeColor = (theme) => theme === 'light' ? '#f5f1e8' : '#061004';
+
+        try {
+          const savedTheme = localStorage.getItem('site-theme');
+          const theme = savedTheme === 'light' ? 'light' : fallbackTheme;
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme === 'light' ? 'light' : 'dark';
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColor(theme));
+        } catch {
+          document.documentElement.dataset.theme = fallbackTheme;
+        }
+      })();
+    </script>
     <title>{pageTitle}</title>
   </head>
   <body>
@@ -38,5 +54,40 @@ const pageTitle = title ? `${title} | ${site.name}` : site.name;
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      (() => {
+        const getThemeColor = (theme) => theme === 'light' ? '#f5f1e8' : '#061004';
+        const root = document.documentElement;
+        const toggles = document.querySelectorAll('[data-theme-toggle]');
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+
+        const applyTheme = (theme) => {
+          root.dataset.theme = theme;
+          root.style.colorScheme = theme === 'light' ? 'light' : 'dark';
+          metaTheme?.setAttribute('content', getThemeColor(theme));
+
+          toggles.forEach((toggle) => {
+            const nextTheme = theme === 'light' ? 'green' : 'light';
+            toggle.setAttribute('aria-pressed', String(theme === 'light'));
+            toggle.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+          });
+        };
+
+        const initialTheme = root.dataset.theme === 'light' ? 'light' : 'green';
+        applyTheme(initialTheme);
+
+        toggles.forEach((toggle) => {
+          toggle.addEventListener('click', () => {
+            const nextTheme = root.dataset.theme === 'light' ? 'green' : 'light';
+            try {
+              localStorage.setItem('site-theme', nextTheme);
+            } catch {
+              /* Theme still changes for this page even when storage is unavailable. */
+            }
+            applyTheme(nextTheme);
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

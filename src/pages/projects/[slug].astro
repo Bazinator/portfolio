@@ -17,29 +17,54 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props as { project: CollectionEntry<'projects'> };
 const { Content } = await render(project);
+const projectLinks = project.data.links;
 ---
 
 <BaseLayout description={project.data.description} title={project.data.title}>
-  <section class="border-b border-line/70 pt-28 pb-14 sm:pt-32 sm:pb-16">
+  <section class="page-hero">
     <Container>
       <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
         <div class="max-w-3xl space-y-5">
-          <a class="editorial-label inline-flex items-center gap-3 hover:text-ink" href="/projects">
-            <span class="text-accent" aria-hidden="true">/</span>
+          <a class="btn btn-ghost editorial-label" href="/projects">
+            <span class="action-mark" aria-hidden="true">/</span>
             Back to projects
           </a>
           <h1 class="page-title">{project.data.title}</h1>
           <p class="body-large max-w-2xl">{project.data.description}</p>
+          {(projectLinks.github || projectLinks.demo) && (
+            <div class="flex flex-wrap gap-3 pt-2">
+              {projectLinks.github && (
+                <a
+                  class="btn btn-secondary"
+                  href={projectLinks.github}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
+              )}
+              {projectLinks.demo && (
+                <a
+                  class="btn btn-primary"
+                  href={projectLinks.demo}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Live Demo
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
-        <aside class="space-y-8 border-t border-line/70 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        <aside class="hero-rule space-y-8 border-t pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
           <div class="space-y-3">
             <p class="editorial-label">Date</p>
-            <p class="text-sm text-ink">{formatDate(project.data.date)}</p>
+            <p class="hero-muted text-sm">{formatDate(project.data.date)}</p>
           </div>
           <div class="space-y-3">
             <p class="editorial-label">Tech stack</p>
-            <ul class="space-y-2 text-sm text-muted">
+            <ul class="hero-muted space-y-2 text-sm">
               {project.data.techStack.map((item) => <li>{item}</li>)}
             </ul>
           </div>
@@ -50,7 +75,7 @@ const { Content } = await render(project);
 
   <section class="py-10 sm:py-12">
     <Container>
-      <figure class="visual-treatment border border-night/10">
+      <figure class="border">
         <img
           alt={`${project.data.title} hero visual`}
           class="aspect-[16/10] h-full w-full object-cover"
@@ -63,6 +88,30 @@ const { Content } = await render(project);
   <section class="py-12 sm:py-14">
     <Container>
       <div class="space-y-14">
+
+        {project.data.gallery.length > 0 && (
+          <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
+            <p class="editorial-label pt-1">Screens</p>
+            <div class="grid gap-8 md:grid-cols-2">
+              {project.data.gallery.map((item) => (
+                <figure class="space-y-4">
+                  <button
+                    aria-label={`Open ${item.alt} fullscreen`}
+                    class="gallery-trigger group"
+                    data-gallery-alt={item.alt}
+                    data-gallery-caption={item.caption ?? ''}
+                    data-gallery-src={item.src}
+                    data-gallery-trigger
+                    type="button"
+                  >
+                    <img alt={item.alt} class="aspect-[16/10] h-full w-full object-cover" src={item.src} />
+                  </button>
+                  {item.caption && <figcaption class="text-sm leading-7">{item.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
         <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
           <p class="editorial-label pt-1">Overview</p>
           <p class="body-large max-w-3xl">{project.data.overview}</p>
@@ -80,21 +129,6 @@ const { Content } = await render(project);
           </div>
         </div>
 
-        {project.data.gallery.length > 0 && (
-          <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
-            <p class="editorial-label pt-1">Screens</p>
-            <div class="grid gap-8 md:grid-cols-2">
-              {project.data.gallery.map((item, index) => (
-                <figure class:list={['space-y-4', index === 0 && 'md:col-span-2']}>
-                  <div class="visual-treatment border border-night/10">
-                    <img alt={item.alt} class="aspect-[16/10] h-full w-full object-cover" src={item.src} />
-                  </div>
-                  {item.caption && <figcaption class="text-sm leading-7 text-muted">{item.caption}</figcaption>}
-                </figure>
-              ))}
-            </div>
-          </div>
-        )}
 
         <div class="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
           <p class="editorial-label pt-1">Learnings</p>
@@ -112,4 +146,92 @@ const { Content } = await render(project);
       </div>
     </Container>
   </section>
+
+  {project.data.gallery.length > 0 && (
+    <div
+      aria-hidden="true"
+      aria-labelledby="gallery-modal-title"
+      class="project-modal fixed inset-0 z-50 hidden px-4 py-5 backdrop-blur-sm sm:px-6"
+      data-gallery-modal
+      role="dialog"
+    >
+      <div class="flex h-full flex-col gap-4">
+        <div class="flex items-center justify-between gap-4">
+          <p class="editorial-label" id="gallery-modal-title">Image preview</p>
+          <button
+            aria-label="Close screen preview"
+            class="btn btn-secondary"
+            data-gallery-close
+            type="button"
+          >
+            Close
+          </button>
+        </div>
+
+        <figure class="flex min-h-0 flex-1 flex-col gap-4">
+          <div class="flex min-h-0 flex-1 items-center justify-center">
+            <img
+              alt=""
+              class="max-h-[90%] max-w-[90%] object-contain"
+              data-gallery-modal-image
+            />
+          </div>
+          <figcaption class="mx-auto max-w-3xl text-center text-sm leading-7 text-paper/72" data-gallery-modal-caption>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  )}
 </BaseLayout>
+
+<script>
+  const galleryModal = document.querySelector<HTMLElement>('[data-gallery-modal]');
+  const galleryModalImage = galleryModal?.querySelector<HTMLImageElement>('[data-gallery-modal-image]');
+  const galleryModalCaption = galleryModal?.querySelector<HTMLElement>('[data-gallery-modal-caption]');
+  const galleryCloseButton = galleryModal?.querySelector<HTMLButtonElement>('[data-gallery-close]');
+  let activeGalleryTrigger: HTMLButtonElement | null = null;
+
+  const closeGalleryModal = () => {
+    if (!galleryModal || !galleryModalImage) return;
+
+    galleryModal.classList.add('hidden');
+    galleryModal.setAttribute('aria-hidden', 'true');
+    galleryModalImage.removeAttribute('src');
+    document.documentElement.classList.remove('overflow-hidden');
+
+    activeGalleryTrigger?.focus();
+    activeGalleryTrigger = null;
+  };
+
+  const openGalleryModal = (trigger: HTMLButtonElement) => {
+    if (!galleryModal || !galleryModalImage || !galleryModalCaption) return;
+
+    activeGalleryTrigger = trigger;
+    galleryModalImage.src = trigger.dataset.gallerySrc ?? '';
+    galleryModalImage.alt = trigger.dataset.galleryAlt ?? '';
+    galleryModalCaption.textContent = trigger.dataset.galleryCaption ?? '';
+    galleryModalCaption.hidden = !trigger.dataset.galleryCaption;
+    galleryModal.classList.remove('hidden');
+    galleryModal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('overflow-hidden');
+    galleryCloseButton?.focus();
+  };
+
+  document.querySelectorAll<HTMLButtonElement>('[data-gallery-trigger]').forEach((trigger) => {
+    trigger.addEventListener('click', () => openGalleryModal(trigger));
+  });
+
+  galleryCloseButton?.addEventListener('click', closeGalleryModal);
+
+  galleryModal?.addEventListener('click', (event) => {
+    if (event.target !== galleryModalImage) {
+      closeGalleryModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && galleryModal?.getAttribute('aria-hidden') === 'false') {
+      closeGalleryModal();
+    }
+  });
+</script>

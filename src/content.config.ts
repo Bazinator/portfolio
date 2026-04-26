@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection} from 'astro:content';
+import { z } from 'astro/zod'
 import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
@@ -14,10 +15,17 @@ const projects = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
+    order: z.number().default(999),
     description: z.string(),
     date: z.coerce.date(),
     featured: z.boolean().default(false),
     tags: z.array(z.string()).min(1),
+    links: z
+      .object({
+        github: z.string().default(''),
+        demo: z.string().default('')
+      })
+      .default({ github: '', demo: '' }),
     image: z.string(),
     overview: z.string(),
     problem: z.string(),

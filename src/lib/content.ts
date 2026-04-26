@@ -19,7 +19,10 @@ export async function getLatestPosts(limit = 3) {
 }
 
 export async function getAllProjects() {
-  return sortByDate(await getCollection('projects'));
+  //return sortByDate(await getCollection('projects'));
+  return [...(await getCollection('projects'))].sort(
+    (left, right) => left.data.order - right.data.order
+  );
 }
 
 export async function getFeaturedProjects(limit = 3) {

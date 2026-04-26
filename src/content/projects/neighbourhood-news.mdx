@@ -1,0 +1,43 @@
+---
+title: Neighbourhood News
+order: 1
+description: A civic information platform that turns fragmented Vancouver Open Data into neighbourhood-specific updates people can actually use.
+date: 2026-01-01
+featured: true
+tags:
+  - FastAPI
+  - PostgreSQL
+  - PostGIS
+  - GitHub Actions
+  - Civic Tech
+links:
+  github: https://github.com/kendymann/neighborhood-news
+  demo: https://neighborhood-news2.vercel.app/
+image: /images/projects/neighborhood-news-overview.jpg
+overview: We reframed a massive amount of public civic datasets into a local awareness tool. Helping residents see nearby road closures, city projects, service requests, permits, and council activity through one searchable neighbourhood feed.
+problem: Vancouver publishes a ton of civic data, everything from road closures to upcoming construction. Yet this information is spread across open-data endpoints and is difficult to interpret at a local level. Residents need a simple and easy way to interact with this data.
+approach:
+  - To combine and query this data well, we built an automated ETL pipeline using GitHub Actions to ingest Vancouver Open Data records on a scheduled basis, transform them into a shared event format, and keep the database current without manual updates.
+  - The backend used FastAPI with PostgreSQL and PostGIS so civic events could be stored with temporal, categorical, and geographic structure..
+  - I implemented idempotent upsert logic to prevent duplicate records across repeated data pulls, allowing the system to safely process evolving open-data sources over time.
+  - Geospatial matching was handled directly in the database with PostGIS, mapping events to neighbourhood boundaries without pushing spatial logic into the application layer.
+  - The API exposed practical filters for date range, event type, and neighbourhood, making the data useful for a frontend experience focused on local context rather than raw civic records.
+techStack:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - PostGIS
+  - GitHub Actions
+  - Vancouver Open Data API
+learnings:
+  - A strong data model matters more than a flashy interface. Utilizing powerful opensource tools with extensions created a great experience building and maintaining this dataset.
+  - Automated ingestion needs strong guardrails, as it only works if repeated runs are safe and resistant to duplicate data.
+  - Civic datasets can provide more valuable when they are organized around communities
+gallery:
+  - src: /images/projects/neighborhood-news-map.png
+    alt: A map-based view showing civic events grouped by Vancouver neighbourhood.
+    caption: Civic records become easier to understand when organized around neighbourhood boundaries.
+  - src: /images/projects/neighborhood-news-api.png
+    alt: A backend flow diagram showing open-data ingestion, PostGIS storage, and filtered API access.
+    caption: The system turns raw open-data feeds into queryable local events through an automated pipeline.
+---

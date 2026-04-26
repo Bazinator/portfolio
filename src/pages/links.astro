@@ -13,7 +13,7 @@ const groups = Object.entries(
 ---
 
 <BaseLayout description="Internet references, tools, and reading links saved by Michael Bazett." title="Links">
-  <section class="border-b border-line/70 pt-28 pb-14 sm:pt-32 sm:pb-16">
+  <section class="page-hero">
     <Container>
       <div class="max-w-3xl space-y-5">
         <p class="editorial-label">Links</p>
@@ -30,23 +30,23 @@ const groups = Object.entries(
       <div class="space-y-12">
         {
           groups.map(([category, links]) => (
-            <section class="grid gap-5 border-t border-line/80 pt-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
+            <section class="grid gap-5 border-t pt-6 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
               <h2 class="editorial-label pt-1">{category}</h2>
-              <ul class="space-y-0 border-y border-line/70">
+              <ul class="space-y-0 border-y">
                 {links.map((link) => (
-                  <li class="border-b border-line/70 py-5 last:border-b-0">
+                  <li class="border-b py-5 last:border-b-0">
                     <a
                       class="group grid gap-2 sm:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] sm:gap-8"
                       href={link.url}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <span class="text-xl font-semibold tracking-[-0.025em] text-ink group-hover:text-accent">
+                      <span class="text-xl font-semibold tracking-[-0.025em] transition-colors group-hover:text-[var(--theme-action)]">
                         {link.title}
                       </span>
-                      <span class="flex items-start justify-between gap-4 text-sm leading-6 text-muted">
+                      <span class="flex items-start justify-between gap-4 text-sm leading-6 text-[var(--theme-muted)]">
                         {link.note}
-                        <span class="mt-0.5 text-accent" aria-hidden="true">/</span>
+                        <span class="action-mark mt-0.5" aria-hidden="true">/</span>
                       </span>
                     </a>
                   </li>

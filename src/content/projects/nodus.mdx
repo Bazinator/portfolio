@@ -1,0 +1,46 @@
+---
+title: "Nodus"
+order: 2
+description: "A browser extension that transforms long-form articles into interactive knowledge graphs for faster comprehension and navigation."
+date: 2026-01-10
+featured: false
+tags:
+  - TypeScript
+  - Chrome Extension
+  - Gemini API
+  - Data Visualization
+links:
+  github: "https://github.com/kendymann/Nodus"
+  demo: "https://www.youtube.com/watch?v=30d2CA0ti0I"
+image: "/images/projects/nodus-main.png"
+overview: "Nodus reframed static articles as structured knowledge maps, allowing users to explore ideas, relationships, and summaries without linear reading."
+problem: "Long-form content is dense and linear, making it difficult to quickly extract structure, identify key ideas, or revisit important sections."
+approach:
+  - "I integrated a pipeline that extracts readable article content and sends it to the Gemini API for structured concept generation."
+  - "The system converts text into nodes and edges, representing relationships between ideas in an interactive graph."
+  - "The UI runs in a browser side panel, enabling real-time interaction without disrupting the reading experience."
+techStack:
+  - TypeScript
+  - JavaScript
+  - HTML/CSS
+  - Gemini API
+learnings:
+  - "Structuring unstructured text is the core challenge in making AI outputs useful."
+  - "Interactive visualizations can reduce cognitive load when navigating complex information."
+  - "Running AI workflows in the browser requires careful handling of latency and user experience."
+gallery:
+  - src: "/images/projects/nodus-connections.jpg"
+    alt: "Knowledge graph generated from an article."
+    caption: "Articles are transformed into nodes and relationships for exploration."
+  - src: "/images/projects/nodus-sidebar.png"
+    alt: "Extension side panel interface."
+    caption: "The interface allows users to generate and interact with the graph in real time."
+---
+
+## Outcome
+
+The extension enabled users to quickly understand the structure of articles and revisit key ideas without re-reading entire pages. It demonstrated a practical use of LLMs for real-time knowledge extraction within a browser environment.
+
+## What carried forward
+
+This project highlighted the importance of turning raw AI output into structured, navigable systems. It reinforced that usefulness comes from how information is shaped and presented, not just generated.

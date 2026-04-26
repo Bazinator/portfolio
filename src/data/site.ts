@@ -9,12 +9,11 @@ export const site = {
 };
 
 export const navigation = [
-  { href: '/', label: 'Home' },
+  { href: '/', label: 'About' },
   { href: '/projects', label: 'Projects' },
   { href: '/writing', label: 'Writing' },
-  { href: '/about', label: 'About' },
   { href: '/links', label: 'Links' },
-  { href: '/files/MichaelBazettResume.pdf', label: 'Resume', external: true }
+  { href: '/resume', label: 'Resume' }
 ];
 
 export const socialLinks = [

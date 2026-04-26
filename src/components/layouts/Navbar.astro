@@ -9,28 +9,38 @@ interface Props {
 const { pathname = '/' } = Astro.props as Props;
 
 const isActive = (href: string) =>
-  href === '/' ? pathname === '/' : pathname.startsWith(href);
+  href === '/' ? pathname === '/' || pathname.startsWith('/about') : pathname.startsWith(href);
 ---
 
-<header class="fixed inset-x-0 top-0 z-40 border-b border-line/60 bg-paper/88 backdrop-blur-md lg:inset-auto lg:left-6 lg:top-6 lg:w-[132px] lg:rounded-xl lg:border lg:border-paper/5 lg:bg-night/0 lg:text-paper lg:shadow-none lg:transition-all lg:duration-300 lg:hover:border-paper/10 lg:hover:bg-night/92 lg:hover:shadow-2xl lg:hover:shadow-night/20 lg:focus-within:border-paper/10 lg:focus-within:bg-night/92">
+<header class="site-header fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md lg:inset-auto lg:left-3 lg:top-5 lg:w-[132px] lg:rounded-xl lg:border lg:shadow-none lg:transition-all lg:duration-300 lg:hover:shadow-xl lg:hover:shadow-night/25">
   <Container class="lg:px-0">
-    <div class="flex min-h-16 items-center justify-between gap-4 py-3 lg:min-h-0 lg:flex-col lg:items-start lg:gap-4 lg:p-4">
-      <a class="flex items-center gap-2 text-lg font-semibold leading-none tracking-[-0.03em] text-ink lg:text-paper" href="/">
-        <span class="h-4 w-4 rounded-full bg-[radial-gradient(circle_at_35%_35%,#f8d75d,#ff5546_52%,#3d7b51)]" aria-hidden="true"></span>
-        <span class="lg:hidden">{site.name}</span>
-        <span class="hidden lg:inline">Michael</span>
-      </a>
+    <div class="flex min-h-16 items-center justify-between gap-4 py-3 lg:min-h-0 lg:-translate-x-[30px] lg:flex-col lg:items-stretch lg:justify-start lg:gap-7 lg:px-3 lg:py-5">
+      <div class="flex items-center gap-2 lg:w-full lg:justify-start">
+        <button
+          aria-label="Switch to light theme"
+          aria-pressed="false"
+          class="brand-orb-button"
+          data-theme-toggle
+          type="button"
+        >
+          <span class="brand-orb h-4 w-4 flex-none rounded-full" aria-hidden="true"></span>
+        </button>
+        <a class="site-brand text-lg font-semibold leading-none tracking-[-0.03em]" href="/">
+          <span class="lg:hidden">{site.name}</span>
+          <span class="hidden lg:inline">Michael</span>
+        </a>
+      </div>
 
       <nav class="overflow-x-auto lg:overflow-visible" aria-label="Primary">
-        <ul class="flex items-center gap-4 text-sm font-semibold text-muted lg:flex-col lg:items-start lg:gap-2 lg:text-[1.02rem] lg:text-paper/48">
+        <ul class="site-nav-list flex items-center gap-4 text-sm font-semibold lg:flex-col lg:items-stretch lg:gap-3 lg:text-[1.02rem]">
           {
             navigation.map((link) => (
               <li>
                 <a
                   aria-current={isActive(link.href) ? 'page' : undefined}
                   class:list={[
-                    'group inline-flex items-center gap-2 whitespace-nowrap transition-colors duration-200 hover:text-ink focus-visible:text-ink focus-visible:outline-none lg:hover:text-paper lg:focus-visible:text-paper',
-                    isActive(link.href) && 'text-ink lg:text-paper'
+                    'site-nav-link group inline-flex items-center gap-2 whitespace-nowrap transition-colors duration-200 focus-visible:outline-none lg:grid lg:w-full lg:grid-cols-[0.65rem_minmax(0,1fr)] lg:gap-2 lg:py-1.5 lg:text-left',
+                    isActive(link.href) && 'is-active'
                   ]}
                   href={link.href}
                   target={link.external ? '_blank' : undefined}
@@ -38,7 +48,7 @@ const isActive = (href: string) =>
                 >
                   <span
                     class:list={[
-                      'hidden h-2 w-2 rounded-full bg-accent lg:inline-block lg:opacity-0 lg:transition-opacity lg:duration-200',
+                      'site-nav-dot hidden h-2 w-2 self-center rounded-full lg:block lg:opacity-0 lg:transition-opacity lg:duration-200',
                       isActive(link.href) && 'lg:opacity-100'
                     ]}
                     aria-hidden="true"

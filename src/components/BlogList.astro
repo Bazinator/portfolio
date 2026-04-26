@@ -13,26 +13,26 @@ interface Props {
 const { basePath = '/writing', posts } = Astro.props as Props;
 ---
 
-<ul class="border-y border-line/80">
+<ul class="border-y">
   {
     posts.map((post) => (
-      <li class="border-b border-line/80 py-6 last:border-b-0 sm:grid sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-6">
+      <li class="border-b py-6 last:border-b-0 sm:grid sm:grid-cols-[150px_minmax(0,1fr)] sm:gap-6">
         <time class="editorial-label block sm:pt-1" datetime={post.data.date.toISOString()}>
           {formatDate(post.data.date)}
         </time>
         <div class="mt-4 space-y-2 sm:mt-0">
           <h3 class="text-xl font-semibold leading-tight tracking-[-0.025em] sm:text-2xl">
-            <a class="hover:text-muted" href={`${basePath}/${entrySlug(post)}/`}>
+            <a class="hover:text-[var(--theme-muted)]" href={`${basePath}/${entrySlug(post)}/`}>
               {post.data.title}
             </a>
           </h3>
           <p>{post.data.description}</p>
           <a
-            class="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.1em] text-ink uppercase transition-transform duration-300 hover:translate-x-1"
+            class="text-action transition-transform duration-300 hover:translate-x-1"
             href={`${basePath}/${entrySlug(post)}/`}
           >
             Read Essay
-            <span class="text-accent" aria-hidden="true">/</span>
+            <span class="action-mark" aria-hidden="true">/</span>
           </a>
         </div>
       </li>

@@ -3,7 +3,7 @@ import Container from '../Container.astro';
 import { site, socialLinks } from '../../data/site';
 ---
 
-<footer class="border-t border-line/70 bg-paper py-8">
+<footer class="dark-section dark-rule border-t py-8">
   <Container>
     <div class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
       <div class="max-w-md space-y-2">
@@ -13,11 +13,11 @@ import { site, socialLinks } from '../../data/site';
         </p>
       </div>
 
-      <ul class="flex flex-wrap gap-5 text-sm font-medium text-muted">
+      <ul class="flex flex-wrap gap-5 text-sm font-medium">
         {
           socialLinks.map((link) => (
             <li>
-              <a class="hover:text-ink" href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
+              <a class="dark-link" href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
                 {link.label}
               </a>
             </li>
