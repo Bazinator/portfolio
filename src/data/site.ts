@@ -1,9 +1,10 @@
 export const site = {
   name: 'Michael Bazett',
-  role: 'Software Systems student building thoughtful software and documenting the process.',
+  role: 'I am a Software Systems student building while documenting the process.',
   description:
-    'I study software systems at SFU and use projects to learn, test ideas, and get better at building real things.',
+    'I study software systems at SFU, and cook in high-pressure restaurant environments. I like to write.',
   location: 'BC, Canada',
+  aboutText: 'No one knows. So let\'s try anyway',
   subtitle:
     'Building useful software, studying systems, and keeping notes while the work gets sharper.'
 };
@@ -41,27 +42,27 @@ export const homeSnapshot = [
 ];
 
 export const aboutNarrative = [
-  'I am a Software Systems student at Simon Fraser University who likes learning by building. Most of my projects start with curiosity: a problem I want to understand better, a tool I wish existed, or a system I want to take apart and rebuild.',
-  'I am still early in my path, so this site is not a victory lap. It is a record of what I am making, what I am learning, and how my thinking is changing over time. I care a lot more about becoming capable than sounding impressive.',
-  'Outside of school, I have worked in demanding environments that taught me consistency, communication, and how to stay calm under pressure. That shows up in how I approach software too: try to be useful, stay honest about what I know, and keep improving the fundamentals.'
+  'Most of my projects start begin with curiosity: a problem I want to understand, a tool I need, or a system I don\'t understand.',
+  'This is my digital tombstone, a record of what I have made, learned, and how my thinking evolves.',
+  'Outside of school, I continue to work in demanding restaurant environments that have taught me consistency, communication, and how to stay calm under pressure. If I am not working, I am probably reading, with my girlfriend, or out being silly.',
 ];
 
 export const aboutFocus = [
-  'Software systems and technical foundations',
-  'Projects that teach through building',
-  'Interfaces and tools that stay clear under real use'
+  'Distributed systems and technical foundations',
+  'Multi-Agent Systems, agentic AI workflows',
+  'Backend heavy data modelling'
 ];
 
 export const principles = [
-  'Build things that teach you something real.',
-  'Clear thinking matters more than inflated language.',
-  'A project is stronger when it solves a real problem, not just looks impressive.'
+  'Build shit to learn',
+  'Clear problem solving and higher level abstraction over syntax',
+  'Software that ships and are used in the real world (Working on this one...)'
 ];
 
 export const resumeExperience = [
   {
     period: '2024 - Present',
-    role: 'Line Cook / Kitchen Team',
+    role: 'Head Line Cook / Expo',
     company: 'The Keg',
     description:
       'Worked in a high-pressure service environment requiring speed, communication, consistency, and calm execution under load.'
@@ -86,32 +87,8 @@ export const resumeEducation = [
 export const referenceLinks = [
   {
     category: 'Software',
-    title: 'Astro Docs',
-    url: 'https://docs.astro.build/',
-    note: 'Framework notes, content collections, and deployment references.'
-  },
-  {
-    category: 'Software',
-    title: 'MDN Web Docs',
-    url: 'https://developer.mozilla.org/',
-    note: 'The web platform reference I keep coming back to.'
-  },
-  {
-    category: 'Systems',
-    title: 'PostgreSQL Documentation',
-    url: 'https://www.postgresql.org/docs/',
-    note: 'Practical reference for data modeling, SQL, and database behavior.'
-  },
-  {
-    category: 'Design',
-    title: 'Laws of UX',
-    url: 'https://lawsofux.com/',
-    note: 'A quick index of interaction principles and interface psychology.'
-  },
-  {
-    category: 'Reading',
-    title: 'Simon Fraser University Library',
-    url: 'https://www.lib.sfu.ca/',
-    note: 'Research starting point for coursework, papers, and deeper reading.'
+    title: 'Marc Brooker on how software engineering is changing',
+    url: 'https://www.youtube.com/watch?v=u3GjIXP9N0s',
+    note: 'A great outlook on the current market, from a hopeful perspective.'
   }
 ];

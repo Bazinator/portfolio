@@ -74,14 +74,14 @@ const projectLinks = project.data.links;
 
     <a
       class:list={[
-        'visual-treatment border transition-transform duration-500 hover:-translate-y-1',
+        'block border',
         reversed ? 'lg:order-1' : 'lg:order-2'
       ]}
       href={projectHref}
     >
       <img
         alt={`${project.data.title} project preview`}
-        class="aspect-[16/10] h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+        class="aspect-[16/10] h-full w-full object-cover"
         loading="lazy"
         src={project.data.image}
       />
