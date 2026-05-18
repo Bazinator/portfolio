@@ -1,10 +1,10 @@
 export const site = {
   name: 'Michael Bazett',
-  role: 'I am a Software Systems student building while documenting the process.',
+  role: 'I am a Software Systems student at SFU. Aspiring into a tech adjacent role, and want to help companies do better.',
   description:
     'I study software systems at SFU, and cook in high-pressure restaurant environments. I like to write.',
   location: 'BC, Canada',
-  aboutText: 'No one knows. So let\'s try anyway',
+  aboutText: 'When are we able to fly home?',
   subtitle:
     'Building useful software, studying systems, and keeping notes while the work gets sharper.'
 };
@@ -42,9 +42,8 @@ export const homeSnapshot = [
 ];
 
 export const aboutNarrative = [
-  'Most of my projects start begin with curiosity: a problem I want to understand, a tool I need, or a system I don\'t understand.',
-  'This is my digital tombstone, a record of what I have made, learned, and how my thinking evolves.',
-  'Outside of school, I continue to work in demanding restaurant environments that have taught me consistency, communication, and how to stay calm under pressure. If I am not working, I am probably reading, with my girlfriend, or out being silly.',
+  'Most of my projects start with an itch to scratch, a problem to be understood, or a tool I need.',
+  'Outside of school, I work in an amazing restaurant environments. I have learned so much there, from consistency to communication, and how to stay calm under pressure. If I am not working or studying, I am probably reading, lifting, living, or out being silly.',
 ];
 
 export const aboutFocus = [
@@ -54,9 +53,9 @@ export const aboutFocus = [
 ];
 
 export const principles = [
-  'Build shit to learn',
+  'Always changing and updating principles',
   'Clear problem solving and higher level abstraction over syntax',
-  'Software that ships and are used in the real world (Working on this one...)'
+  'Bringing real change to problems you care for (Working on this one...)'
 ];
 
 export const resumeExperience = [
