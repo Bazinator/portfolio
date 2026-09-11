@@ -1,6 +1,6 @@
 ---
 import Container from './Container.astro';
-import { aboutFocus, aboutNarrative, principles, site } from '../data/site';
+import { aboutNarrative, socialLinks, site } from '../data/site';
 ---
 
 <section class="about-intro relative min-h-[170svh]" data-about-intro>
@@ -9,86 +9,108 @@ import { aboutFocus, aboutNarrative, principles, site } from '../data/site';
     <div class="vitruvian-stage relative flex aspect-square w-[min(82vw,620px)] items-center justify-center" data-vitruvian-stage>
       <img
         alt="Leonardo da Vinci's Vitruvian Man"
-        class="h-full w-full object-contain transition-opacity duration-150"
-        style="opacity: calc(0.92 - var(--about-progress, 0) * 0.52)"
-        src="/images/leonardo-da-vinci-vitruvian-man-2.jpg"
+        class="vitruvian-image h-full w-full object-contain"
+        src="/images/mainVirtruvianMan.png"
       />
       <h1 class="about-title absolute inset-x-0 top-1/2 mx-auto max-w-[12ch] -translate-y-1/2 text-center text-[clamp(3.2rem,10vw,7.8rem)] font-semibold leading-[0.86] tracking-[-0.055em]">
         {site.name}
       </h1>
     </div>
-    <div class="about-intro-fade pointer-events-none absolute inset-0 opacity-[var(--about-progress,0)] transition-opacity duration-150"></div>
+    <div class="about-intro-fade pointer-events-none absolute inset-0" style="opacity: var(--about-fade, 0)"></div>
+    <a class="scroll-cue absolute bottom-10 flex flex-col items-center gap-3 text-xs uppercase tracking-[0.2em]" href="#about-content" aria-label="Scroll to about">
+      <span>Scroll to unlock</span>
+      <svg class="scroll-arrow" width="20" height="28" viewBox="0 0 20 28" fill="none" aria-hidden="true">
+        <path d="M10 2v22m-7-7 7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
   </div>
 </section>
 
-<section class="dark-section dark-rule -mt-[70svh] relative z-10 border-t py-16 sm:py-20">
+<section id="about-content" class="dark-section dark-rule relative z-10 border-t py-16 sm:py-20">
   <Container>
     <div class="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)] lg:gap-14">
       <div class="space-y-8">
         <div class="max-w-3xl space-y-5">
           <p class="editorial-label">About</p>
-          <h2 class="section-title">{site.aboutText}</h2>
-          <p class="body-large">{site.role}</p>
+          <h2 class="section-title">{site.name}</h2>
+          <p class="body-large">
+            I am a software student at SFU studying computer science and applied math.
+            Check out some of my <a class="underline underline-offset-4" href="/projects">projects</a> or
+            <a class="underline underline-offset-4" href="/writing">writing</a>.
+            Feel free to reach out with any questions, always up for an interesting conversation.
+          </p>
         </div>
 
         <article class="prose-editorial max-w-3xl">
           {aboutNarrative.map((paragraph) => <p>{paragraph}</p>)}
         </article>
+        <nav aria-label="Connect with Michael" class="flex flex-wrap gap-x-6 gap-y-3">
+          {socialLinks.map((link) => (
+            <a class="underline underline-offset-4" href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+          ))}
+        </nav>
       </div>
 
-      <aside class="space-y-8">
+      <aside class="mx-auto w-full max-w-[300px] space-y-3 sm:mx-0 sm:max-w-none sm:space-y-8">
         <figure class="dark-rule overflow-hidden border">
           <img
-            alt="Michael's desk setup"
-            class="aspect-[4/5] h-full w-full object-cover"
+            alt="A mountain trail and lake"
+            class="aspect-[4/3] w-full object-cover sm:aspect-[4/5]"
             loading="lazy"
-            src="/images/personal/deskSetup.JPG"
+            src="/images/personal/heatherTrailLake.JPG"
           />
         </figure>
         <div class="grid grid-cols-2 gap-3">
           <img
-            alt="SFU campus in snow"
+            alt="SFU campus"
             class="aspect-square h-full w-full object-cover"
             loading="lazy"
-            src="/images/personal/snowySFU.JPG"
+            src="/images/personal/sfuCampus.JPG"
           />
           <img
-            alt="A mountain trail and lake"
+            alt="Cooking competition"
             class="aspect-square h-full w-full object-cover"
             loading="lazy"
-            src="/images/personal/heatherTrailLake.JPG"
+            src="/images/personal/cookingComp.jpeg"
           />
         </div>
       </aside>
     </div>
 
-    <div class="dark-rule mt-14 grid gap-8 border-t pt-10 md:grid-cols-2">
-      <div class="space-y-4">
-        <p class="editorial-label">Focus</p>
-        <ul class="space-y-3 text-sm leading-7">
-          {aboutFocus.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-      <div class="space-y-4">
-        <p class="editorial-label">Principles</p>
-        <ul class="space-y-3 text-sm leading-7">
-          {principles.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-    </div>
   </Container>
 </section>
 
+<style>
+  .vitruvian-image {
+    transform: rotate(calc(var(--about-progress, 0) * 90deg));
+    transform-origin: center;
+    will-change: transform;
+    opacity: 0.92;
+  }
+  .scroll-cue { color: var(--theme-hero-muted); opacity: var(--cue-opacity, 1); }
+  .scroll-cue:focus-visible { opacity: 1; }
+  .scroll-arrow { animation: scroll-bounce 1.8s ease-in-out infinite; }
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(7px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vitruvian-image { transform: none; will-change: auto; }
+    .scroll-arrow { animation: none; }
+  }
+</style>
+
 <script>
   const intro = document.querySelector<HTMLElement>('[data-about-intro]');
-  const stage = document.querySelector<HTMLElement>('[data-vitruvian-stage]');
 
   const updateAboutProgress = () => {
-    if (!intro || !stage) return;
+    if (!intro) return;
     const rect = intro.getBoundingClientRect();
     const scrollable = Math.max(1, rect.height - window.innerHeight);
     const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
-    stage.style.setProperty('--about-progress', progress.toFixed(3));
+    intro.style.setProperty('--about-progress', progress.toFixed(3));
+    intro.style.setProperty('--about-fade', Math.max(0, (progress - 0.65) / 0.35).toFixed(3));
+    intro.style.setProperty('--cue-opacity', Math.max(0, 1 - progress * 5).toFixed(3));
   };
 
   updateAboutProgress();

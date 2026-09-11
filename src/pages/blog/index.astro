@@ -1,28 +1,5 @@
 ---
-import BaseLayout from '../../components/layouts/BaseLayout.astro';
-import BlogList from '../../components/BlogList.astro';
-import Container from '../../components/Container.astro';
-import { getAllPosts } from '../../lib/content';
-
-const posts = await getAllPosts();
+import Redirect from '../../components/Redirect.astro';
 ---
 
-<BaseLayout description="Writing on systems, interfaces, projects, and the craft of building useful software." title="Writing">
-  <section class="page-hero">
-    <Container>
-      <div class="max-w-3xl space-y-5">
-        <p class="editorial-label">Writing</p>
-        <h1 class="page-title">Notes from the build log.</h1>
-        <p class="body-large">
-          Essays and process notes on systems, interfaces, and the small decisions that make work clearer.
-        </p>
-      </div>
-    </Container>
-  </section>
-
-  <section class="py-14 sm:py-16">
-    <Container>
-      <BlogList posts={posts} />
-    </Container>
-  </section>
-</BaseLayout>
+<Redirect to="/writing/" />

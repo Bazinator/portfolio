@@ -1,0 +1,22 @@
+---
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+const canonical = new URL(to, Astro.site ?? Astro.url);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0;url=${to}`} />
+    <link rel="canonical" href={canonical} />
+    <title>Redirecting to Writing</title>
+  </head>
+  <body>
+    <p>This page has moved. <a href={to}>Continue to Writing</a>.</p>
+  </body>
+</html>

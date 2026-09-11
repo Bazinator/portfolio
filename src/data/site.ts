@@ -1,12 +1,7 @@
 export const site = {
   name: 'Michael Bazett',
-  role: 'I am a Software Systems student at SFU. Aspiring into a tech adjacent role, and want to help companies do better.',
   description:
     'I study software systems at SFU, and cook in high-pressure restaurant environments. I like to write.',
-  location: 'BC, Canada',
-  aboutText: 'When are we able to fly home?',
-  subtitle:
-    'Building useful software, studying systems, and keeping notes while the work gets sharper.'
 };
 
 export const navigation = [
@@ -20,42 +15,11 @@ export const navigation = [
 export const socialLinks = [
   { href: 'https://github.com/bazinator', label: 'GitHub', external: true },
   { href: 'https://www.linkedin.com/in/michael-bazett/', label: 'LinkedIn', external: true },
-  { href: '/files/MichaelBazettResume.pdf', label: 'Resume', external: true }
-];
-
-export const homeSnapshot = [
-  {
-    label: 'Current',
-    text:
-      'Studying Software Systems at SFU while building side projects in web software, data tools, and systems-oriented work.'
-  },
-  {
-    label: 'Background',
-    text:
-      'Most of my growth has come from learning in public through projects, coursework, and real responsibility outside tech.'
-  },
-  {
-    label: 'Focus',
-    text:
-      'I am drawn to working hard. I build things that have an impact, and solve problems.'
-  }
+  { href: '/files/Michael%20Bazett%20Resume.pdf', label: 'Resume', external: true }
 ];
 
 export const aboutNarrative = [
-  'Most of my projects start with an itch to scratch, a problem to be understood, or a tool I need.',
-  'Outside of school, I work in an amazing restaurant environments. I have learned so much there, from consistency to communication, and how to stay calm under pressure. If I am not working or studying, I am probably reading, lifting, living, or out being silly.',
-];
-
-export const aboutFocus = [
-  'Distributed systems and technical foundations',
-  'Multi-Agent Systems, agentic AI workflows',
-  'Backend heavy data modelling'
-];
-
-export const principles = [
-  'Always changing and updating principles',
-  'Clear problem solving and higher level abstraction over syntax',
-  'Bringing real change to problems you care for (Working on this one...)'
+  'Otherwise outside of school, I work in an amazing restaurant environment. I have learned so much there, from consistency to communication, and how to stay calm under pressure. If I am not working or studying, I am probably reading, lifting, living, or out being silly.',
 ];
 
 export const resumeExperience = [
@@ -83,7 +47,25 @@ export const resumeEducation = [
   }
 ];
 
-export const referenceLinks = [
+export const referenceLinks: { category: string; title: string; url: string; note: string; date?: string }[] = [
+  {
+    category: 'AI & Writing',
+    date: '2026-08-06',
+    title: "I'm begging you: Never Write with AI",
+    url: 'https://www.nytimes.com/2026/08/04/opinion/artificial-intelligence-ai-writing.html',
+    note: `The argument is compelling. The ideas shared here produces an image of a future of humans that are illiterate, unable to form arguments, write, or express ideas. These humans would instead rely on technology to create, write, and think for them.
+
+It makes me want to take the time to think, reflect and discuss important topics to continue building my skill. Personally, I have always struggled with writing. I have loved to read since`
+  },
+  {
+    category: 'AI & Writing',
+    date: '2026-08-08',
+    title: 'I hate what AI is doing to the minds and happiness of the young',
+    url: 'https://www.theguardian.com/books/ng-interactive/2026/aug/08/i-hate-what-ai-is-doing-to-the-minds-and-happiness-of-the-young-katherine-rundell-on-the-view-from-the-classroom',
+    note: `An interesting perspective from someone very tied to education. The article reads with a heavy overlay of gloom, near the ending she adds "dark times are coming". I am sick of reading the negative outlooks on our humanities future. It is easy to point and stare at a problem, and claim we are doomed, without trying to solve that problem. I stand by my view that we live in one of the most prosperous times in our history, with access to knowledge, training, food, water and shelter being at an all time high. Technology enriches our life, taking away many a mundane task from us. Some would argue we needs those. I argue not.
+
+She has good points on students fighting back, and being conscious of AI usage to ensure we are still creating and learning. She throws several groups under the bus for no apparent reason, with no evidence. Talking about AI slop without highlighting any of the advancement, the technological improvement, the powerful systems we will see emerge from this.`
+  },
   {
     category: 'Software',
     title: 'Marc Brooker on how software engineering is changing',

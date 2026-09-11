@@ -1,9 +1,0 @@
-<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="900" fill="#FFFFFF"/>
-  <rect x="120" y="140" width="960" height="620" stroke="#111111" stroke-width="2"/>
-  <path d="M200 250H1000" stroke="#111111" stroke-width="2"/>
-  <path d="M200 370H1000" stroke="#D9D9D4" stroke-width="2"/>
-  <path d="M200 490H1000" stroke="#D9D9D4" stroke-width="2"/>
-  <path d="M200 610H1000" stroke="#D9D9D4" stroke-width="2"/>
-  <text x="120" y="100" fill="#111111" font-family="Inter, Arial, sans-serif" font-size="26" letter-spacing="4">ARCHIVE INDEX</text>
-</svg>
